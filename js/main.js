@@ -22,7 +22,7 @@ $(function(){
 			swiperSlide,
 			swiperNext = $('.slider_next'),
 			swiperPrev = $('.slider_prev'),
-			mainNavLinks = $('nav.main a'),	
+			mainNavLinks = $('nav.main a.modal_link'),	
 			logo = $('.logo_link'),
 			serie = $('.category'),
 			theBody = $('body');
@@ -46,7 +46,13 @@ $(function(){
 				[priorities.high, 'photos/field2.jpg'],
 				[priorities.high, 'photos/field3.jpg'],
 				[priorities.high, 'photos/beach.jpg'],
-				[priorities.high, 'photos/plane.jpg']
+				[priorities.high, 'photos/plane.jpg'],
+				[priorities.high, 'photos/sample_image1.jpeg'],
+				[priorities.high, 'photos/sample_image2.jpeg'],
+				[priorities.high, 'photos/sample_image3.jpeg'],
+				[priorities.high, 'photos/sample_image4.jpeg'],
+				[priorities.high, 'photos/sample_image5.jpeg'],
+				[priorities.high, 'photos/sample_image6.jpeg']
 				/*[priorities.medium, 'beach.jpg'],
 				[priorities.medium, 'plane.jpg'],
 				[priorities.low, 'beach.jpg'],
