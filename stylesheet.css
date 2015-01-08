@@ -145,12 +145,29 @@ header nav a.logo {
 	float: left;
 }
 
-header nav a.profile {
+.menu {
+	width: 1000px;
+}
+
+.options {
+	display: none;
+	height: 60px;
+}
+
+.options li {
+	display: inline-block;
+	margin-top: -20px;
+}
+
+.options li a {
 	line-height: 110px;
 	display: inline-block;
 	font-weight: 600;
 	text-transform: uppercase;
-	margin-left: 30px;
+}
+
+.menu:hover > ul {
+	display: inline-block;
 }
 
 .overlay_big {
@@ -338,10 +355,23 @@ nav.social ul li {
 	max-width: 1000px;
 	position: absolute;
 	height: 200px;
-	left: 50%;
 	top: 27px;
 	z-index: 9999;
+	margin-top: 150px;
+}
+
+.modal.profile {
+	left: 50%;
 	margin-left: -250px;
+}
+
+.modal.series {
+	right: 0%;
+}
+
+.modal.contact {
+	left: 45%;
+	text-align: center;
 }
 
 .gallery {
@@ -362,6 +392,7 @@ nav.social ul li {
 .series_list {
 	list-style: none;
 	margin: 0px;
+	padding-left: 0;
 }
 
 .series_list li {
@@ -445,6 +476,10 @@ ul.sm_links li a.mail {
 	font-size: 14px;
 	font-weight: 600;
 	line-height: 53px;
+}
+
+ul.sm_links li a img.instagram_icon {
+	margin-top: 16px;
 }
 
 .image-title {
