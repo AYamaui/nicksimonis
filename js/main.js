@@ -25,7 +25,8 @@ $(function(){
 			mainNavLinks = $('nav.main a.modal_link'),	
 			logo = $('.logo_link'),
 			serie = $('.category'),
-			theBody = $('body');
+			theBody = $('body'),
+			modalBackdrop = $('.modal');
 			
 	var baseURL = 'http://joeyvo.me/nicksimonis/images/', // TODO: Change
 			priorities = {
@@ -179,11 +180,48 @@ $(function(){
 			swiperPrev.click(function(){
 				mySwiper.swipePrev();
 			});
+
+			swiperContainer.click(function(){
+
+				if (modal) {
+					modalBackdrop.fadeOut(400, 'easeInOutCubic');
+					swiperSlide.animate({'opacity': 1});
+					modal = false;
+				}
+			});
 					
 			mainNavLinks.click(function(){
 		
 				var rel = $(this).attr('rel');
 				var page = $(document).find('.' + rel);
+				
+				if(!modal){
+					page.fadeIn(400, 'easeInOutCubic');
+					currentlyOpen = page;
+					currentRel = rel;
+					modal = true;
+					swiperSlide.animate({'opacity': .2});
+
+					$('.serie_card').fadeOut(400, 'easeInOutCubic');
+				}else{
+					if(currentRel !== rel){
+						currentlyOpen.fadeOut(400, 'easeInOutCubic');
+						page.fadeIn(400, 'easeInOutCubic');
+						currentlyOpen = page;
+						currentRel = rel;
+					}else{
+						page.fadeOut(400, 'easeInOutCubic');	
+						modal = false;
+						swiperSlide.animate({'opacity': 1});
+						$('.serie_card').fadeIn(400, 'easeInOutCubic');
+					}
+				}
+			});
+
+			$('.mail').click(function(){
+
+				var rel = 'contact';
+				var page = $('.contact');
 				
 				if(!modal){
 					page.fadeIn(400, 'easeInOutCubic');
@@ -238,6 +276,9 @@ $(function(){
 		
 	};
 	
+	// Calsulates dynamically the max height for the profile container
+	var max = $('footer').offset().top - $('.profile').offset().top - 2*($('.left').height());
+  $('.profile').css('max-height', max);
 
 	preloader.init();
 	core.init();
