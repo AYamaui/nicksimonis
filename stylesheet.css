@@ -403,6 +403,9 @@ input, textarea {
 
 label.form_label {
 	float: left;
+	width: 100%;
+	text-align: left;
+	padding-bottom: 2px;
 }
 
 .gallery {
@@ -507,14 +510,7 @@ ul.sm_links li a.mail {
 	font-size: 14px;
 	font-weight: 600;
 	line-height: 53px;
-}
-
-ul.sm_links li a img.instagram_icon {
-	margin-top: 16px;
-}
-
-ul.sm_links li a img.facebook_icon {
-	margin-top: 15px;
+	vertical-align: middle;
 }
 
 .image-title {
