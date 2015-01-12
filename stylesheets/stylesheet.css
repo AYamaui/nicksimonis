@@ -1,21 +1,28 @@
 @charset "UTF-8";
+@import url(animation.css);
+@import url(fontello-codes.css);
+@import url(fontello-embedded.css);
+@import url(fontello-ie7-codes.css);
+@import url(fontello-ie7.css);
+@import url(fontello-ie7.css);
+@import url(fontello.css);
 
 @font-face {
 	font-family: 'Entypo';
-	src: url('fonts/entypo.eot'); /* IE9 Compat Modes */
-	src: url('fonts/entypo.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-		 url('fonts/entypo.woff') format('woff'), /* Modern Browsers */
-		 url('fonts/entypo.ttf')  format('truetype'), /* Safari, Android, iOS */
-		 url('fonts/entypo.svg#svgEntypo') format('svg'); /* Legacy iOS */
+	src: url('../fonts/entypo.eot'); /* IE9 Compat Modes */
+	src: url('../fonts/entypo.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		 url('../fonts/entypo.woff') format('woff'), /* Modern Browsers */
+		 url('../fonts/entypo.ttf')  format('truetype'), /* Safari, Android, iOS */
+		 url('../fonts/entypo.svg#svgEntypo') format('svg'); /* Legacy iOS */
 }
 
 @font-face {
 	font-family: 'Entypo Social';
-	src: url('fonts/entypo-social.eot'); /* IE9 Compat Modes */
-	src: url('fonts/entypo-social.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-		 url('fonts/entypo-social.woff') format('woff'), /* Modern Browsers */
-		 url('fonts/entypo-social.ttf')  format('truetype'), /* Safari, Android, iOS */
-		 url('fonts/entypo-social.svg#svgEntypo') format('svg'); /* Legacy iOS */
+	src: url('../fonts/entypo-social.eot'); /* IE9 Compat Modes */
+	src: url('../fonts/entypo-social.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		 url('../fonts/entypo-social.woff') format('woff'), /* Modern Browsers */
+		 url('../fonts/entypo-social.ttf')  format('truetype'), /* Safari, Android, iOS */
+		 url('../fonts/entypo-social.svg#svgEntypo') format('svg'); /* Legacy iOS */
 }
 
 	/*! normalize.css v2.1.2 | MIT License | git.io/normalize */article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,video{display:inline-block}audio:not([controls]){display:none;height:0}[hidden]{display:none}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}a:focus{outline:thin dotted}a:active,a:hover{outline:0}h1{font-size:2em;margin:.67em 0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}mark{background:#ff0;color:#000}code,kbd,pre,samp{font-family:monospace,serif;font-size:1em}pre{white-space:pre-wrap}q{quotes:"\201C" "\201D" "\2018" "\2019"}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:0}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}button,input{line-height:normal}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}
@@ -220,7 +227,7 @@ header nav a.logo {
 .logo_con {
 	width: 100px;
 	height: 100px;
-	background: url(images/logo_frame.png) center no-repeat;
+	background: url(../images/logo_frame.png) center no-repeat;
 	position: relative;
 	padding: 6px 6px 6px 5px;
 	/*-webkit-border-top-right-radius: 500px;
@@ -258,7 +265,7 @@ header nav a.logo {
 
 .logo_arrow {
 	position: absolute;
-	background: url(images/logo_arrow.png) center no-repeat;
+	background: url(../images/logo_arrow.png) center no-repeat;
 	z-index: 9999;
 	width: 100px;
 	height: 100px;
@@ -465,14 +472,14 @@ label.form_label {
 }
 
 .icon {
-	font-family: 'Entypo';
+	font-family: 'fontello';
 	font-size: 36px;
 	vertical-align: top;
 }
 
 .icon-social {
-	font-family: 'Entypo Social';
-	font-size: 36px;
+	font-family: 'fontello';
+	font-size: 15px;
 	vertical-align: middle;
 }
 
@@ -499,18 +506,19 @@ ul.sm_links {
 	padding: 0;
 }
 
-ul.sm_links li {
+ul.sm_links li, ul.sm_links a.mail {
 	display: inline-block;
 	float: left;
 	line-height: 50px;
 	margin: 0 10px;
 }
 
-ul.sm_links li a.mail {
+a.mail {
 	font-size: 14px;
 	font-weight: 600;
-	line-height: 53px;
 	vertical-align: middle;
+	height: 36px;
+	padding-top: 4px;
 }
 
 .image-title {
