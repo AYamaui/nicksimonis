@@ -113,6 +113,7 @@ body {
 	font-weight: 400;
 	font-smooth:always;
 	-webkit-font-smoothing: antialiased;
+	overflow: hidden;
 }
 
 a {
@@ -369,8 +370,14 @@ nav.social ul li {
 .modal.profile {
 	left: 50%;
 	margin-left: -250px;
-  overflow-x: visible;
-  overflow-y: scroll;
+	overflow: hidden;
+	width: 480px;
+}
+
+.profile_container {
+	overflow: auto;
+	padding-right: 20px;
+	width: 500px;
 }
 
 .modal.series {
@@ -523,4 +530,5 @@ a.mail {
 
 .image-title {
 	text-align: center;
+	padding-top: 20px;
 }

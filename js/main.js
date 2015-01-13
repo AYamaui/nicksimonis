@@ -279,6 +279,7 @@ $(function(){
 	// Calsulates dynamically the max height for the profile container
 	var max = $('footer').offset().top - $('.profile').offset().top - 2*($('.left').height());
   $('.profile').css('max-height', max);
+  $('.profile_container').css('max-height', max - 5);
 
 	preloader.init();
 	core.init();
