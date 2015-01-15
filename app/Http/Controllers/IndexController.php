@@ -10,7 +10,7 @@ class IndexController extends Controller {
      * @return void
      */
     public function __construct() {
-        $this->middleware('guest');
+        
     }
 
     /**
@@ -19,11 +19,14 @@ class IndexController extends Controller {
      * @return Response
      */
     public function index() {
-        return view('index');
+        $data['series'] = \App\Serie::all();
+        return view('index', $data);
     }
     
-    public function series(){
-        return view('series');
+    public function photos($id){
+        $data['serie'] = \App\Serie::findOrFail($id);
+        $data['photos'] = $data['serie']->photos;
+        return view('photos',$data);
     }
 
 }
