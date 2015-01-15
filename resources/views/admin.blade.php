@@ -35,7 +35,9 @@
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li>{!!HTML::link('','Home')!!}</li>
+                        <li>{!!HTML::link('','Back to web')!!}</li>
+                        <li>{!!HTML::link('admin/series','Series')!!}</li>
+                        <li>{!!HTML::link('admin/configurations','Configuration')!!}</li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">

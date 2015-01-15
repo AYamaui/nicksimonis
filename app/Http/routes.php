@@ -18,4 +18,5 @@ Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
     'admin/series' => 'Admin\SeriesController',
+    'admin/configurations' => 'Admin\ConfigurationsController',
 ]);

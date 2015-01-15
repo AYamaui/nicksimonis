@@ -20,7 +20,7 @@ class Photo extends Model {
                 case "Thumbnail":
                     $ret['thumbnail_source'] = $size->source;
                     break;
-                case "Original":
+                case "Large":
                     $ret['original_source'] = $size->source;
                     break;
             }
