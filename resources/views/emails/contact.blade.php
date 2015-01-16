@@ -5,6 +5,12 @@
         <title>{{$message->getSubject()}}</title>
     </head>
     <body>
-        Click here to reset your password: {{ link_to('password/reset/'.$token) }}
+        <p>New message in nicksimonis.co</p>
+        <ul>
+            <li>Email: {{$email}}</li>
+            <li>Subject: {{$subject}}</li>
+            <li>Message: {{$messageString}}</li>
+            <li>Ip Address: {{Request::getClientIp()}}</li>
+        </ul>
     </body>
 </html>

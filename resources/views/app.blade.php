@@ -62,13 +62,15 @@
                 @include('social_links',['contact'=>false])
             </div>
 
-            <div class="contact_form">
+            <div class="contact_form" id="contact_form">
+                {!!Form::hidden('_token', csrf_token(),['id'=>'_token'])!!}
                 <label class="form_label">Email</label>
-                <input id="email" type="text" placeholder="Email">
+                <input name="email" id="email" type="email" placeholder="Email">
                 <label class="form_label">Subject</label>
-                <input id="subject" type="text" placeholder="Subject">
+                <input name="subject" id="subject" type="text" placeholder="Subject">
                 <label class="form_label">Message</label>
-                <textarea id="content" rows="5"></textarea>
+                <textarea name="message" id="message" rows="3"></textarea>
+                <a href="#" id="send_message">Send Message</a>
             </div>
         </section>
         <footer class="clearfix">
@@ -81,5 +83,9 @@
                 @include('social_links',['contact'=>true])
             </div>
         </footer>
+
+        <script>
+            var baseUrl = "{{url('/')}}/";
+        </script>
     </body>
 </html>

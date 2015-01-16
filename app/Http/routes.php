@@ -11,8 +11,9 @@
   |
  */
 
-Route::get('/', 'IndexController@index');
-Route::get('photos/{id}', 'IndexController@photos');
+get('/', 'IndexController@index');
+get('photos/{id}', 'IndexController@photos');
+post('contact', 'IndexController@contact');
 
 Route::controllers([
     'auth' => 'Auth\AuthController',
