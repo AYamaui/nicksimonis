@@ -1,13 +1,6 @@
 $(function () {
     'use strict';
-
-    //$('nav, .slider_next, .slider_prev').delay(3000).fadeOut();
-
-    $(document).mousemove(function () {
-        //$('nav, .slider_next, .slider_prev').show();
-        //$('nav, .slider_next, .slider_prev').delay(3000).fadeOut();
-    });
-
+  
     // -------------------------------------------------------------------------
     // Default & common values. Used to cache selectors and benefit consistency.
     // -------------------------------------------------------------------------
@@ -258,12 +251,13 @@ $(function () {
     };
 
     // Calsulates dynamically the max height for the profile container
-    var max = $('footer').offset().top - $('.profile').offset().top - 2 * ($('.left').height());
+    var max = $(document).height()*0.95;
     $('.profile').css('max-height', max);
     $('.profile_container').css('max-height', max - 5);
 
     preloader.init();
     core.init();
+    
     $('#send_message').click(function (evt) {
         $(evt.target).html("Sending Message..");
         var inputs = {

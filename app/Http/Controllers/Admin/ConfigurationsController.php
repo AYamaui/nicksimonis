@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Helpers\phpFlickr;
-use Illuminate\Auth\Guard;
 
 class ConfigurationsController extends Controller {
 

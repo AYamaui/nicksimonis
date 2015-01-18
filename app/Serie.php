@@ -8,6 +8,7 @@ namespace App;
  * @author arasm_000
  */
 use Illuminate\Database\Eloquent\Model;
+use App\Helpers\phpFlickr;
 
 class Serie extends Model {
 
@@ -57,6 +58,17 @@ class Serie extends Model {
                     $this->save();
                 }
             }
+        }
+    }
+
+    public function checkUpdate() {
+        $lastUpdate = $this->updated_at;
+        //if pass more than 10 minutes update the photos inside the serie..
+        if ($lastUpdate->diffInMinutes() > 10) {
+            $user = User::first();
+            $f = new phpFlickr(API_KEY, API_SECRET);
+            $f->setToken($user->flickr_token);
+            \App\Serie::storeFromFlickr($f, "update");
         }
     }
 

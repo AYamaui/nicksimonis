@@ -15,7 +15,7 @@ return [
       |
      */
 
-    'driver' => 'smtp',
+    'driver' => 'mail',
     /*
       |--------------------------------------------------------------------------
       | SMTP Host Address
@@ -26,7 +26,7 @@ return [
       | the Mailgun mail service which will provide reliable deliveries.
       |
      */
-    'host' => 'smtp.mailgun.org',
+    'host' => 'mail.nicksimonis.co',
     /*
       |--------------------------------------------------------------------------
       | SMTP Host Port
@@ -37,7 +37,7 @@ return [
       | stay compatible with the Mailgun e-mail application by default.
       |
      */
-    'port' => 587,
+    'port' => 25,
     /*
       |--------------------------------------------------------------------------
       | Global "From" Address
@@ -70,7 +70,7 @@ return [
       | connection. You may also set the "password" value below this one.
       |
      */
-    'username' => null,
+    'username' => 'nicksimonis@nicksimonis.co',
     /*
       |--------------------------------------------------------------------------
       | SMTP Server Password
@@ -81,7 +81,7 @@ return [
       | connection so that the application will be able to send messages.
       |
      */
-    'password' => null,
+    'password' => 'SkeetBang1',
     /*
       |--------------------------------------------------------------------------
       | Sendmail System Path

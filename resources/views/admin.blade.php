@@ -36,8 +36,10 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li>{!!HTML::link('','Back to web')!!}</li>
+                        @if (!Auth::guest())
                         <li>{!!HTML::link('admin/series','Series')!!}</li>
                         <li>{!!HTML::link('admin/configurations','Configuration')!!}</li>
+                        @endif
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">

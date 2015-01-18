@@ -29,6 +29,7 @@ class IndexController extends Controller {
     public function photos($id) {
         $data['social_links'] = \App\Configuration::getSocialLinks();
         $data['serie'] = \App\Serie::findOrFail($id);
+        $data['serie']->checkUpdate();
         $data['photos'] = $data['serie']->photos;
         return view('photos', $data);
     }

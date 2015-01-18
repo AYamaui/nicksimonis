@@ -50,8 +50,7 @@
                 <img src="{{url('images/profile.jpg')}}" class="profile_picture" />
                 <h1>{{App\Configuration::get('app_name')}}</h1>
                 <img src="{{url('images/world.png')}}" />
-                <p>I am Nick Simonis. I am from a small island just off the coast of Venezuela, called Curaçao. I am currently living in the Netherlands and try to find some new places to explore from time to time. Photography to me is a means of expression, just one of many ways of telling a story and my personal favorite.</p>
-                <p>I am a hunter of light and an observer of time. Nature is my inspiration and understanding is my pursuit. I attempt to tell stories on behalf of my subjects. My approach is to explore the essence of a statement before bringing the visual elements together to compose the narrative. I am always looking for new stories, both as a teller and a listener.</p>
+                {!!App\Configuration::get('profile_text')!!}
             </div>
         </section>
 

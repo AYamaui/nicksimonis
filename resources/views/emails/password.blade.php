@@ -5,6 +5,7 @@
         <title>{{$message->getSubject()}}</title>
     </head>
     <body>
-        Click here to reset your password: {{ link_to('password/reset/'.$token) }}
+        <p>Click on the link to reset your password</p> 
+        <p>{!!link_to('password/reset/'.$token, 'Reset Password')!!}</p>
     </body>
 </html>
