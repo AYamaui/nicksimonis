@@ -1,12 +1,11 @@
 $(function () {
     'use strict';
-  
+
     // -------------------------------------------------------------------------
     // Default & common values. Used to cache selectors and benefit consistency.
     // -------------------------------------------------------------------------
 
-    var swiper,
-            height = $(window).height(),
+    var height = $(window).height(),
             modal = false,
             currentlyOpen = false,
             currentRel = false;
@@ -21,32 +20,9 @@ $(function () {
             theBody = $('body'),
             modalBackdrop = $('.modal');
 
-    var baseURL = 'http://joeyvo.me/nicksimonis/images/', // TODO: Change
-            priorities = {
-                immediate: 0,
-                high: 1,
-                medium: 2,
-                low: 3
-            },
-    currentP = 0,
-            // Use JSON for image load list
-
-            images = [
-                [priorities.immediate, 'logo_frame.png'],
-                [priorities.immediate, 'logo_arrow.png'],
-                [priorities.immediate, 'photos/field4.jpg'],
-            ],
-            pre = new Array(),
+    var pre = new Array(),
             loaded = new Array(),
-            count = 0,
-            start = 0;
-
-    // -----------------------------
-    // Settings with default values.
-    // -----------------------------
-
-    var settings = {
-    };
+            count = 0;
 
     // ---------------
     // Core functions. 
@@ -54,84 +30,40 @@ $(function () {
 
     var preloader = {
         init: function () {
-
-            //start = preloader.microtime(true);
-            //console.log(preloader.microtime() + ': Start loading!');
-
             preloader.loadQueue();
             preloader.check();
-
         },
         loadQueue: function () {
             for (var i = 0; i < images.length; i++) {
-                if (currentP === images[i][0]) {
-                    pre[i] = new Image();
-                    pre[i].src = baseURL + images[i][1];
-                    loaded[i] = false;
-                }
+                pre[i] = new Image();
+                pre[i].src = images[i];
+                loaded[i] = false;
             }
-            currentP++;
-
-            if (currentP > 4) {
-                // When all priority levels have been done
+        },
+        check: function () {
+            if (count == pre.length) {
+                $('.logo_con.supahfast').animate({top: '-100px'}, 500, 'easeInQuint', function () {
+                    $('.load_screen').fadeOut(300, function () {
+                        
+                    });
+                });
                 return false;
             }
 
-        },
-        check: function () {
-
-            if (count == pre.length) {
-                //console.log(preloader.microtime() + ': Done loading priority level: ' + currentP);
-                //console.log('Duration: ' + (preloader.microtime(true) - start) + ' seconds');
-                //start = preloader.microtime(true);
-
-                if (currentP > priorities.immediate) {
-                    $('.logo_con.supahfast').animate({top: '-100px'}, 500, 'easeInQuint', function () {
-                        $('.load_screen').fadeOut(300, function () {
-                            //$('.instructions').delay(800).fadeOut(500);
-
-                            /*$('body').mousemove(function(){
-                             $('.instructions').delay(800).fadeOut(500);	
-                             });*/
-
-                        });
-                    });
-                }
-
-                if (preloader.loadQueue() === false) {
-                    // When all are done loading.
-                    return false;
-                }
-            } else {
-                $('#loading').text('Loaded: ' + count);
-            }
-
             for (var i = 0; i <= pre.length; i++) {
-
-                if (pre[i] != undefined && pre[i].complete == true && loaded[i] == false) {
-                    // Check if image i is loaded
-                }
-
                 if (loaded[i] == false && pre[i].complete) {
                     loaded[i] = true;
                     count++;
                 }
             }
-            var timerID = setTimeout(function () {
-                preloader.check()
+            setTimeout(function () {
+                preloader.check();
             }, 10);
-        },
-        microtime: function (get_as_float) {
-            get_as_float = (get_as_float == undefined) ? false : get_as_float;
-            var unixtime_ms = new Date().getTime();
-            var sec = parseInt(unixtime_ms / 1000);
-            return get_as_float ? (unixtime_ms / 1000) : (unixtime_ms - (sec * 1000)) / 1000 + ' ' + sec;
         }
     };
 
     var core = {
         init: function () {
-
             var mySwiper = swiperContainer.swiper({
                 mode: 'horizontal',
                 loop: true,
@@ -193,7 +125,6 @@ $(function () {
             });
 
             $('.mail').click(function () {
-
                 var rel = 'contact';
                 var page = $('.contact');
 
@@ -245,19 +176,17 @@ $(function () {
                     mySwiper.swipePrev();
                 }
             });
-
         }
-
     };
 
     // Calsulates dynamically the max height for the profile container
-    var max = $(document).height()*0.95;
+    var max = height * 0.95;
     $('.profile').css('max-height', max);
     $('.profile_container').css('max-height', max - 5);
 
     preloader.init();
     core.init();
-    
+    // Send mail
     $('#send_message').click(function (evt) {
         $(evt.target).html("Sending Message..");
         var inputs = {

@@ -9,6 +9,7 @@ namespace App;
  */
 use Illuminate\Database\Eloquent\Model;
 use App\Helpers\phpFlickr;
+use Carbon\Carbon;
 
 class Serie extends Model {
 

@@ -7,4 +7,11 @@
         @endforeach
     </div>
 </div>
+<script>
+    var images = [
+            @foreach($photos as $photo)
+            '{{$photo->original_source}}',
+            @endforeach
+    ]
+</script>
 @stop

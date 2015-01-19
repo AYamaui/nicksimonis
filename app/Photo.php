@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Photo extends Model {
 
+    protected $touches = ['serie'];
+
     public function getSizes($f) {
         $ret = [];
         $f->photos_getSizes($this->id);
@@ -26,6 +28,10 @@ class Photo extends Model {
             }
         }
         return $ret;
+    }
+    
+    public function serie(){
+        return $this->belongsTo('App\Serie');
     }
 
 }

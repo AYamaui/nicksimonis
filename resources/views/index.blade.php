@@ -7,4 +7,11 @@
         @endforeach
     </div>
 </div>
+<script>
+    var images = [
+            @foreach($series as $serie)
+            '{{$serie->original_source}}',
+            @endforeach
+    ]
+</script>
 @stop
