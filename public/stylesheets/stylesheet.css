@@ -531,5 +531,7 @@ a.mail {
 
 .image-title {
     text-align: center;
-    padding-top: 20px;
+    padding-top: 30px;
+    margin: auto;
+    max-width: 35%;
 }

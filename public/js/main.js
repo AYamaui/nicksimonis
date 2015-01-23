@@ -12,11 +12,8 @@ $(function () {
 
     var swiperContainer = $('.swiper-container'),
             swiperSlide,
-            swiperNext = $('.slider_next'),
-            swiperPrev = $('.slider_prev'),
             mainNavLinks = $('nav.main a.modal_link'),
             logo = $('.logo_link'),
-            serie = $('.category'),
             theBody = $('body'),
             modalBackdrop = $('.modal');
 
@@ -44,7 +41,7 @@ $(function () {
             if (count == pre.length) {
                 $('.logo_con.supahfast').animate({top: '-100px'}, 500, 'easeInQuint', function () {
                     $('.load_screen').fadeOut(300, function () {
-                        
+
                     });
                 });
                 return false;
@@ -64,34 +61,37 @@ $(function () {
 
     var core = {
         init: function () {
+            //hide all photos of series..
+            $('.series-photos').addClass('hidden');
             var mySwiper = swiperContainer.swiper({
                 mode: 'horizontal',
                 loop: true,
-                simulateTouch: false,
-                onSlideChangeStart: function (s) {
-                    $('.serie_card h1').text(s.getSlide(s.activeSlide + 1).data('title'));
-                    $('.serie_card p').text(s.getSlide(s.activeSlide + 1).data('description'));
-                    $('.serie_card a.cta').css('color', s.getSlide(s.activeSlide + 1).data('color'));
-                    $('.serie_card a.cta').css('borderColor', s.getSlide(s.activeSlide + 1).data('color'));
+                simulateTouch: true,
+                keyboardControl: true,
+                mousewheelControl: true,
+                onSlideChangeStart: function (data) {
+                    var activeSlide = data.getSlide(data.activeSlide);
+                    console.log($(activeSlide).hasClass('hidden'));
+
                 }
             });
 
             swiperSlide = $('.swiper-slide'); // Cache on init, due to loading of Swiper
             swiperSlide.height(height);
 
-            swiperNext.click(function () {
+            $('.slider_next').click(function () {
                 mySwiper.swipeNext();
             });
 
-            swiperPrev.click(function () {
+            $('.slider_prev').click(function () {
                 mySwiper.swipePrev();
             });
 
             swiperContainer.click(function () {
-
                 if (modal) {
                     modalBackdrop.fadeOut(400, 'easeInOutCubic');
                     swiperSlide.animate({'opacity': 1});
+                    $('.image-title').show();
                     modal = false;
                 }
             });
@@ -107,9 +107,10 @@ $(function () {
                     currentRel = rel;
                     modal = true;
                     swiperSlide.animate({'opacity': .2});
-
+                    $('.image-title').hide();
                     $('.serie_card').fadeOut(400, 'easeInOutCubic');
                 } else {
+                    $('.image-title').show();
                     if (currentRel !== rel) {
                         currentlyOpen.fadeOut(400, 'easeInOutCubic');
                         page.fadeIn(400, 'easeInOutCubic');
@@ -134,9 +135,10 @@ $(function () {
                     currentRel = rel;
                     modal = true;
                     swiperSlide.animate({'opacity': .2});
-
+                    $('.image-title').hide();
                     $('.serie_card').fadeOut(400, 'easeInOutCubic');
                 } else {
+                    $('.image-title').show();
                     if (currentRel !== rel) {
                         currentlyOpen.fadeOut(400, 'easeInOutCubic');
                         page.fadeIn(400, 'easeInOutCubic');
@@ -157,24 +159,17 @@ $(function () {
                     currentlyOpen = false;
                     modal = false;
                     swiperSlide.animate({'opacity': 1});
+                    $('.image-title').show();
                 }
             });
 
-            serie.click(function () {
+            $('.category').click(function () {
                 var rel = $(this).attr('rel');
                 var page = $(document).find('.' + rel);
                 currentlyOpen.fadeOut(400, 'easeInOutCubic');
                 page.fadeIn(400, 'easeInOutCubic');
                 currentlyOpen = page;
                 currentRel = rel;
-            });
-
-            theBody.keydown(function (event) {
-                if (event.which == '39') {
-                    mySwiper.swipeNext();
-                } else if (event.which == '37') {
-                    mySwiper.swipePrev();
-                }
             });
         }
     };
