@@ -32,7 +32,7 @@
                     </a>
                     <ul class="options">
                         <li>
-                            {!!HTML::link('','Series',['title'=>'Series','rel'=>'series'])!!}
+                            <a href="#" id="series-list" title="Series" rel="Series">Series</a>
                         </li>
                         <li>
                             <a href="#" class="modal_link" title="Profile" rel="profile">Profile</a>

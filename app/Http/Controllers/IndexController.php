@@ -22,16 +22,11 @@ class IndexController extends Controller {
      */
     public function index() {
         $data['series'] = \App\Serie::all();
+        $data['series']->each(function($serie) {
+            $serie->checkUpdate();
+        });
         $data['social_links'] = \App\Configuration::getSocialLinks();
         return view('index', $data);
-    }
-
-    public function photos($id) {
-        $data['social_links'] = \App\Configuration::getSocialLinks();
-        $data['serie'] = \App\Serie::findOrFail($id);
-        $data['serie']->checkUpdate();
-        $data['photos'] = $data['serie']->photos;
-        return view('photos', $data);
     }
 
     public function contact(ContactRequest $request) {

@@ -12,9 +12,10 @@ $(function () {
 
     var swiperContainer = $('.swiper-container'),
             swiperSlide,
+            swipers,
+            swiperSeries,
             mainNavLinks = $('nav.main a.modal_link'),
             logo = $('.logo_link'),
-            theBody = $('body'),
             modalBackdrop = $('.modal');
 
     var pre = new Array(),
@@ -61,19 +62,23 @@ $(function () {
 
     var core = {
         init: function () {
-            //hide all photos of series..
-            $('.series-photos').addClass('hidden');
-            var mySwiper = swiperContainer.swiper({
+            swipers = [];
+            swiperSeries = $('.series-list').swiper({
                 mode: 'horizontal',
                 loop: true,
                 simulateTouch: true,
                 keyboardControl: true,
-                mousewheelControl: true,
-                onSlideChangeStart: function (data) {
-                    var activeSlide = data.getSlide(data.activeSlide);
-                    console.log($(activeSlide).hasClass('hidden'));
+                mousewheelControl: true
+            });
 
-                }
+            $('.photos-list').each(function () {
+                swipers.push($(this).swiper({
+                    mode: 'horizontal',
+                    loop: true,
+                    simulateTouch: true,
+                    keyboardControl: true,
+                    mousewheelControl: true
+                }));
             });
 
             swiperSlide = $('.swiper-slide'); // Cache on init, due to loading of Swiper
@@ -207,5 +212,22 @@ $(function () {
                 $(evt.target()).html("Send Message");
             }
         });
+    });
+
+    $('.serie').click(function () {
+        var id = $(this).data('id');
+        $('.photos-' + id).show();
+        $('.series-list').hide();
+        for (var i = 0; i < swipers.length; i++) {
+            swipers[i].reInit();
+        }
+    });
+
+    $('#series-list').click(function () {
+        $('.photos').hide();
+        $('.series-list').show();
+        for (var i = 0; i < swipers.length; i++) {
+            swipers[i].reInit();
+        }
     });
 });

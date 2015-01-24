@@ -1,15 +1,29 @@
 @extends('app')
 @section('content')
-<div class="swiper-container">
+<div class="swiper-container series-list">
     <div class="swiper-wrapper">
         @foreach($series as $serie)
-        <div class="swiper-slide serie" data-title="{{$serie->title}}" data-description="{{$serie->description}}" style="background: url({{$serie->original_source}}) center no-repeat; background-size: cover;"><h1 class="image-title">{!!HTML::link('photos/'.$serie->id,$serie->title) !!}</h1></div>
-        @foreach($serie->photos as $photo)
-        <div class="swiper-slide series-photos photos-{{$serie->id}}" data-title="{{$photo->title}}" style="background: url({{$photo->original_source}}) center no-repeat; background-size: cover;"><h1 class="image-title">{{$photo->title}}</h1></div>
-        @endforeach
+        <div style="background: url({{$serie->original_source}}) center no-repeat; background-size: cover;" class="swiper-slide" data-title="{{$serie->title}}" data-description="{{$serie->description}}">
+            <a href="#" class="serie" data-id="{{$serie->id}}">
+                <h1 class="image-title">{{$serie->title}}</h1>
+            </a>
+        </div>
         @endforeach
     </div>
 </div>
+@foreach($series as $serie)
+<div class="swiper-container photos-list photos-{{$serie->id}}" style="display: none;">
+    <div class="swiper-wrapper">
+        @foreach($serie->photos as $photo)
+        <div class="swiper-slide" data-title="{{$photo->title}}" style="background: url({{$photo->original_source}}) center no-repeat; background-size: cover;">
+            <a href="#">
+                <h1 class="image-title">{{$photo->title}}</h1>
+            </a>
+        </div>
+        @endforeach
+    </div>
+</div>
+@endforeach
 <script>
     var images = [
             @foreach($series as $serie)
