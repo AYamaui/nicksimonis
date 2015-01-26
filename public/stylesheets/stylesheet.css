@@ -535,3 +535,10 @@ a.mail {
     margin: auto;
     max-width: 35%;
 }
+
+.image-description{
+    text-align: justify;
+    padding-top: 30px;
+    margin: auto;
+    max-width: 35%;
+}

@@ -11,6 +11,7 @@ $(function () {
             currentRel = false;
 
     var swiperContainer = $('.swiper-container'),
+            activePhotoId,
             swiperSlide,
             swipers,
             swiperSeries,
@@ -62,6 +63,7 @@ $(function () {
 
     var core = {
         init: function () {
+            activePhotoId = null;
             swipers = [];
             swiperSeries = $('.series-list').swiper({
                 mode: 'horizontal',
@@ -72,24 +74,33 @@ $(function () {
             });
 
             $('.photos-list').each(function () {
-                swipers.push($(this).swiper({
+                var id = $(this).data('id');
+                swipers[id] = $(this).swiper({
                     mode: 'horizontal',
                     loop: true,
                     simulateTouch: true,
                     keyboardControl: true,
                     mousewheelControl: true
-                }));
+                });
             });
 
             swiperSlide = $('.swiper-slide'); // Cache on init, due to loading of Swiper
             swiperSlide.height(height);
 
             $('.slider_next').click(function () {
-                mySwiper.swipeNext();
+                if (activePhotoId == null) {
+                    swiperSeries.swipeNext();
+                } else {
+                    swipers[activePhotoId].swipeNext();
+                }
             });
 
             $('.slider_prev').click(function () {
-                mySwiper.swipePrev();
+                if (activePhotoId == null) {
+                    swiperSeries.swipePrev();
+                } else {
+                    swipers[activePhotoId].swipePrev();
+                }
             });
 
             swiperContainer.click(function () {
@@ -215,19 +226,22 @@ $(function () {
     });
 
     $('.serie').click(function () {
-        var id = $(this).data('id');
-        $('.photos-' + id).show();
+        activePhotoId = $(this).data('id');
+        $('.photos-' + activePhotoId).show();
         $('.series-list').hide();
-        for (var i = 0; i < swipers.length; i++) {
-            swipers[i].reInit();
-        }
+        swipers[activePhotoId].reInit();
+    });
+    $('.serie').focus(function () {
+        $('.image-description').show();
+    });
+    $('.serie').blur(function () {
+        $('.image-description').hide();
     });
 
     $('#series-list').click(function () {
-        $('.photos').hide();
+        activePhotoId = null;
+        $('.photos-list').hide();
         $('.series-list').show();
-        for (var i = 0; i < swipers.length; i++) {
-            swipers[i].reInit();
-        }
+        swiperSeries.reInit();
     });
 });
