@@ -231,11 +231,13 @@ $(function () {
         $('.series-list').hide();
         swipers[activePhotoId].reInit();
     });
-    $('.serie').focus(function () {
-        $('.image-description').show();
+    
+    $('.serie').mouseenter(function () {
+        $('.image-description').fadeIn();
     });
-    $('.serie').blur(function () {
-        $('.image-description').hide();
+    
+    $('.serie').mouseleave(function () {
+        $('.image-description').fadeOut();
     });
 
     $('#series-list').click(function () {
