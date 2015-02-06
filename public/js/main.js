@@ -233,10 +233,12 @@ $(function () {
     });
     
     $('.serie').mouseenter(function () {
+        swiperSlide.animate({'opacity': .2});
         $('.image-description').fadeIn();
     });
     
     $('.serie').mouseleave(function () {
+        swiperSlide.animate({'opacity': 1});
         $('.image-description').fadeOut();
     });
 
