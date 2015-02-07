@@ -22,7 +22,9 @@ class IndexController extends Controller {
      */
     public function index() {
         $data['series'] = \App\Serie::all();
-        $data['series']->first()->checkUpdate();
+        if ($data['series']->count() > 0) {
+            $data['series']->first()->checkUpdate();
+        }
         $data['social_links'] = \App\Configuration::getSocialLinks();
         return view('index', $data);
     }
