@@ -232,15 +232,15 @@ $(function () {
         swipers[activePhotoId].reInit();
     });
     
-    $('.serie').mouseenter(function () {
-        swiperSlide.animate({'opacity': .2});
-        $('.image-description').fadeIn();
-    });
+    // $('.serie').mouseenter(function () {
+    //     swiperSlide.animate({'opacity': .2});
+    //     $('.image-description').fadeIn();
+    // });
     
-    $('.serie').mouseleave(function () {
-        swiperSlide.animate({'opacity': 1});
-        $('.image-description').fadeOut();
-    });
+    // $('.serie').mouseleave(function () {
+    //     swiperSlide.animate({'opacity': 1});
+    //     $('.image-description').fadeOut();
+    // });
 
     $('#series-list').click(function () {
         activePhotoId = null;
@@ -249,13 +249,17 @@ $(function () {
         swiperSeries.reInit();
     });
 
-    // Decreases the swiper container opacity when the menu is on hover
-    $('.menu').hover(function() {
-        $('.swiper-container').animate({'opacity': .2});
+    $('.image-title').mouseenter(function() {
+        $(this).addClass('shadowed-text');  
+        var imageDescription = $(this).parent().find('.image-description');
+        imageDescription.fadeIn(); 
+        imageDescription.addClass('shadowed-container');
     });
 
-    // Decreases the swiper container opacity when the image title is on hover
-    $('.image-title').hover(function() {
-        $('.swiper-container').animate({'opacity': .2});
+    $('.image-title').mouseleave(function() {
+        $(this).removeClass('shadowed-text'); 
+        var imageDescription = $(this).parent().find('.image-description');
+        imageDescription.fadeOut(); 
+        imageDescription.removeClass('shadowed-container'); 
     });
 });

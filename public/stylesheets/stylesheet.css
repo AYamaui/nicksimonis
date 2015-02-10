@@ -543,3 +543,14 @@ a.mail {
     margin: auto;
     max-width: 35%;
 }
+
+.shadowed-text {
+    text-shadow: 7px 5px 3px black;
+}
+
+.shadowed-container {
+    background: radial-gradient(gray, transparent) repeat scroll 0 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 2em hsla(0, 0%, 0%, 1);
+    padding-left: 10px;
+    padding-right: 10px;
+}
