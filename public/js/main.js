@@ -248,4 +248,14 @@ $(function () {
         $('.series-list').show();
         swiperSeries.reInit();
     });
+
+    # Decreases the swiper container opacity when the menu is on hover
+    $('.menu').hover(function() {
+        $('.swiper-container').animate({'opacity': .2});
+    });
+
+    # Decreases the swiper container opacity when the image title is on hover
+    $('.image-title').hover(function() {
+        $('.swiper-container').animate({'opacity': .2});
+    });
 });
