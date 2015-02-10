@@ -190,7 +190,7 @@ $(function () {
         }
     };
 
-    // Calsulates dynamically the max height for the profile container
+    // Calculates dynamically the max height for the profile container
     var max = height * 0.95;
     $('.profile').css('max-height', max);
     $('.profile_container').css('max-height', max - 5);
@@ -249,12 +249,12 @@ $(function () {
         swiperSeries.reInit();
     });
 
-    # Decreases the swiper container opacity when the menu is on hover
+    // Decreases the swiper container opacity when the menu is on hover
     $('.menu').hover(function() {
         $('.swiper-container').animate({'opacity': .2});
     });
 
-    # Decreases the swiper container opacity when the image title is on hover
+    // Decreases the swiper container opacity when the image title is on hover
     $('.image-title').hover(function() {
         $('.swiper-container').animate({'opacity': .2});
     });
