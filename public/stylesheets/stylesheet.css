@@ -534,6 +534,7 @@ a.mail {
     padding-top: 30px;
     margin: auto;
     max-width: 35%;
+    z-index: 1000;
 }
 
 .image-description{
