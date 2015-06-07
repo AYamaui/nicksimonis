@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use \App\Http\Requests\ContactRequest;
+use App\Http\Requests\ContactRequest;
 
 class IndexController extends Controller {
 

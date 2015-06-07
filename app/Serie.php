@@ -7,9 +7,8 @@ namespace App;
  *
  * @author arasm_000
  */
-use Illuminate\Database\Eloquent\Model;
 use App\Helpers\phpFlickr;
-use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 
 class Serie extends Model {
 

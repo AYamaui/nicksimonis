@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Helpers\phpFlickr;
+use App\Http\Controllers\Controller;
 use Illuminate\Auth\Guard;
+use Illuminate\Http\Request;
 
 class SeriesController extends Controller {
 
