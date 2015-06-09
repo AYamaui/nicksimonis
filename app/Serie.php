@@ -66,9 +66,9 @@ class Serie extends Model {
         //if pass more than 60 minutes update the photos inside the serie..
         if ($lastUpdate->diffInMinutes() > 60) {
             $user = User::first();
-            $f = new phpFlickr(API_KEY, API_SECRET);
+            $f = new phpFlickr(env('API_KEY'), env('API_SECRET'));
             $f->setToken($user->flickr_token);
-            \App\Serie::storeFromFlickr($f, "update");
+            Serie::storeFromFlickr($f, "update");
         }
     }
 

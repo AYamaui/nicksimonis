@@ -19,8 +19,8 @@ $(function () {
             logo = $('.logo_link'),
             modalBackdrop = $('.modal');
 
-    var pre = new Array(),
-            loaded = new Array(),
+    var pre = [],
+            loaded = [],
             count = 0;
 
     // ---------------

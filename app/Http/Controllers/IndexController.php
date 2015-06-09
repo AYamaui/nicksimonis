@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Configuration;
 use App\Http\Requests\ContactRequest;
+use App\Serie;
 
 class IndexController extends Controller {
 
@@ -21,11 +23,11 @@ class IndexController extends Controller {
      * @return Response
      */
     public function index() {
-        $data['series'] = \App\Serie::all();
+        $data['series'] = Serie::all();
         if ($data['series']->count() > 0) {
             $data['series']->first()->checkUpdate();
         }
-        $data['social_links'] = \App\Configuration::getSocialLinks();
+        $data['social_links'] = Configuration::getSocialLinks();
         return view('index', $data);
     }
 
