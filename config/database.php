@@ -24,7 +24,7 @@ return [
       | you may use many connections at once using the Database library.
       |
      */
-    'default' => 'mysql',
+    'default' => 'app',
     /*
       |--------------------------------------------------------------------------
       | Database Connections
@@ -41,7 +41,7 @@ return [
       |
      */
     'connections' => [
-        'mysql' => [
+        'app' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST'),
             'database' => env('DB_DATABASE'),
