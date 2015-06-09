@@ -8,23 +8,30 @@ use App\Serie;
 use Illuminate\Auth\Guard;
 use Illuminate\Http\Request;
 
-class SeriesController extends Controller {
+class SeriesController extends Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 
-    public function getIndex() {
+    public function getIndex()
+    {
         $data['series'] = Serie::with('photos')->get();
+
         return view('admin.series.index', $data);
     }
-    
-    public function getDelete($id){
+
+    public function getDelete($id)
+    {
         Serie::deleteSerie($id);
-        return redirect('admin/series')->with('message','The serie was successfully removed');
+
+        return redirect('admin/series')->with('message', 'The serie was successfully removed');
     }
 
-    public function getPullflickr($type, Guard $auth) {
+    public function getPullflickr($type, Guard $auth)
+    {
         $permissions = "read";
         $user = $auth->user();
         $f = new phpFlickr(env('API_KEY'), env('API_SECRET'));
@@ -34,16 +41,19 @@ class SeriesController extends Controller {
             $f->setToken($user->flickr_token);
         }
         Serie::storeFromFlickr($f, $type);
+
         return redirect('admin/series')->with('message', 'Series was successfully pulled from flickr.');
     }
 
-    public function getSavetoken(Request $request, Guard $auth) {
+    public function getSavetoken(Request $request, Guard $auth)
+    {
         $token = $request->input('frob');
         $f = new phpFlickr(env('API_KEY'), env('API_SECRET'));
         $response = $f->auth_getToken($token);
         $user = $auth->user();
         $user->flickr_token = $response['token']['_content'];
         $user->save();
+
         return redirect('admin/series')->with('message', 'Account connected to flickr. Pull series again');
     }
 

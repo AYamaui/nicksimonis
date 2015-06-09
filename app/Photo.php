@@ -9,11 +9,13 @@ namespace App;
  */
 use Illuminate\Database\Eloquent\Model;
 
-class Photo extends Model {
+class Photo extends Model
+{
 
     protected $touches = ['serie'];
 
-    public function getSizes($f) {
+    public function getSizes($f)
+    {
         $ret = [];
         $f->photos_getSizes($this->id);
         $rep = json_decode($f->response);
@@ -27,10 +29,12 @@ class Photo extends Model {
                     break;
             }
         }
+
         return $ret;
     }
-    
-    public function serie(){
+
+    public function serie()
+    {
         return $this->belongsTo('App\Serie');
     }
 

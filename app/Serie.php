@@ -10,15 +10,30 @@ namespace App;
 use App\Helpers\phpFlickr;
 use Illuminate\Database\Eloquent\Model;
 
-class Serie extends Model {
+class Serie extends Model
+{
 
-    public static function deleteSerie($id) {
+    public static function deleteSerie($id)
+    {
         $serie = Serie::find($id);
         $serie->photos()->delete();
         $serie->delete();
     }
 
-    public static function storeFromFlickr($f, $type) {
+    public function checkUpdate()
+    {
+        $lastUpdate = $this->updated_at;
+        //if pass more than 60 minutes update the photos inside the serie..
+        if ($lastUpdate->diffInMinutes() > 60) {
+            $user = User::first();
+            $f = new phpFlickr(env('API_KEY'), env('API_SECRET'));
+            $f->setToken($user->flickr_token);
+            Serie::storeFromFlickr($f, "update");
+        }
+    }
+
+    public static function storeFromFlickr($f, $type)
+    {
         $f->photosets_getList();
         $response = json_decode($f->response);
         foreach ($response->photosets->photoset as $album) {
@@ -38,7 +53,8 @@ class Serie extends Model {
         }
     }
 
-    public function loadPhotos($f) {
+    public function loadPhotos($f)
+    {
         if ($this->id != "" && $this->id != 0) {
             $this->photos()->delete();
             $f->photosets_getPhotos($this->id);
@@ -61,18 +77,8 @@ class Serie extends Model {
         }
     }
 
-    public function checkUpdate() {
-        $lastUpdate = $this->updated_at;
-        //if pass more than 60 minutes update the photos inside the serie..
-        if ($lastUpdate->diffInMinutes() > 60) {
-            $user = User::first();
-            $f = new phpFlickr(env('API_KEY'), env('API_SECRET'));
-            $f->setToken($user->flickr_token);
-            Serie::storeFromFlickr($f, "update");
-        }
-    }
-
-    public function photos() {
+    public function photos()
+    {
         return $this->hasMany('App\Photo');
     }
 

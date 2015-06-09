@@ -1,17 +1,19 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
-class CreatePhotosTable extends Migration {
+class CreatePhotosTable extends Migration
+{
 
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up() {
-        Schema::create('photos', function(Blueprint $table) {
+    public function up()
+    {
+        Schema::create('photos', function (Blueprint $table) {
             $table->bigInteger('id', false, true);
             $table->bigInteger('serie_id', false, true);
             $table->string('title');
@@ -29,7 +31,8 @@ class CreatePhotosTable extends Migration {
      *
      * @return void
      */
-    public function down() {
+    public function down()
+    {
         Schema::drop('photos');
     }
 

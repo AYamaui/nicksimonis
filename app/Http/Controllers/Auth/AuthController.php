@@ -7,7 +7,8 @@ use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Validation\Validator;
 
-class AuthController extends Controller {
+class AuthController extends Controller
+{
     /*
       |--------------------------------------------------------------------------
       | Registration & Login Controller
@@ -23,14 +24,15 @@ class AuthController extends Controller {
 
     use AuthenticatesAndRegistersUsers;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->middleware('guest', ['except' => 'getLogout']);
     }
 
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     public function validator(array $data)
@@ -45,7 +47,7 @@ class AuthController extends Controller {
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return User
      */
     public function create(array $data)
