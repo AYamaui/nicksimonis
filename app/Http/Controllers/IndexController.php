@@ -8,11 +8,6 @@ use App\Serie;
 
 class IndexController extends Controller {
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct() {
         
     }
@@ -35,7 +30,7 @@ class IndexController extends Controller {
         $data = $request->sanitize();
         $data['messageString'] = $request->get('message');
         \Mail::send('emails.contact', $data, function($message) {
-            $message->to(\App\Configuration::get('admin_email'), '')
+            $message->to(Configuration::get('admin_email'), '')
                     ->subject('New message in nicksimonis.co');
         });
         return \Response::json(['message' => 'Thanks for your message.']);

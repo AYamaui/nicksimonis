@@ -21,7 +21,7 @@ class SeriesController extends Controller {
     
     public function getDelete($id){
         Serie::deleteSerie($id);
-        return redirect('admin/series')->with('message','The serie was succesfully removed');
+        return redirect('admin/series')->with('message','The serie was successfully removed');
     }
 
     public function getPullflickr($type, Guard $auth) {
@@ -34,7 +34,7 @@ class SeriesController extends Controller {
             $f->setToken($user->flickr_token);
         }
         Serie::storeFromFlickr($f, $type);
-        return redirect('admin/series')->with('message', 'Series was succesfully pulled from flickr.');
+        return redirect('admin/series')->with('message', 'Series was successfully pulled from flickr.');
     }
 
     public function getSavetoken(Request $request, Guard $auth) {

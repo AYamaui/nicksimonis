@@ -41,8 +41,8 @@ class Configuration extends Model {
     }
 
     public static function updateMany($values) {
-        foreach ($values as $variable => $values) {
-            Configuration::set($variable, $values);
+        foreach ($values as $variable => $value) {
+            Configuration::set($variable, $value);
         }
     }
 
